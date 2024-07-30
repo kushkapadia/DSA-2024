@@ -8,6 +8,8 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+ //new push
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode cur = head;
