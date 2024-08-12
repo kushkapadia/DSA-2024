@@ -1,27 +1,52 @@
-import java.util.*;
+// import java.util.*;
 
-class KthLargest {
+// class KthLargest {
+//     int k;
+//     ArrayList arr = new ArrayList();
+
+//     public KthLargest(int k, int[] nums) {
+//         this.k = k;
+
+//         for (int i = 0; i < nums.length; i++) {
+//             this.arr.add(nums[i]);
+//         }
+
+//     }
+
+//     public int add(int val) {
+
+//         arr.add(val);
+//         Collections.sort(arr);
+
+//         return (int) arr.get(arr.size() - k);
+//     }
+// }
+
+
+
+ class KthLargest {
+    PriorityQueue<Integer> pq;
     int k;
-    ArrayList arr = new ArrayList();
+  public KthLargest(int k, int[] nums) {
+    this.k = k;
+    this.pq = new PriorityQueue();
 
-    public KthLargest(int k, int[] nums) {
-        this.k = k;
-   
-        for (int i = 0; i < nums.length; i++) {
-            this.arr.add(nums[i]);
+        for(int num : nums){
+            add(num);
         }
+  
+  }
 
+   public int add(int val) {
+    if(pq.size() <k || val > pq.peek()){
+        pq.offer(val);
+        if(pq.size() >k){
+            pq.poll();
+        }
     }
-
-    public int add(int val) {
-       
-
-        arr.add(val);
-      Collections.sort(arr);
-
-        return (int) arr.get(arr.size()-k);
+    return pq.peek();
+   }
     }
-}
 
 /**
  * Your KthLargest object will be instantiated and called as such:
